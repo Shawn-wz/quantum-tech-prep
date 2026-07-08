@@ -1,2 +1,2 @@
 # quantum-tech-prep
-Prework for the Quantum Technology learning program.
+Xie Zien's prework for the Quantum Technology learning program.
