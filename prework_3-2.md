@@ -1,0 +1,10 @@
+$$
+f(x+\delta)-f(x-\delta)=A(\sin(x+B+\delta)-\sin(x+B-\delta))=2A\cos(x+B)\sin\delta
+$$
+$$
+f'(x)=A\cos(x+B)
+$$
+比较知
+$$
+\tau=2\sin\delta
+$$s
