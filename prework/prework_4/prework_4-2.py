@@ -1,5 +1,4 @@
 import tensorcircuit as tc
-import matplotlib.pyplot as plt
 
 K = tc.set_backend("tensorflow")
 
@@ -7,12 +6,9 @@ c = tc.Circuit(2)
 c.h([0, 1])
 c.cx(0, 1)
 
-theory = K.real(c.expectation_ps(z=[0,1])).numpy().item()
-
-@K.jit
-def measure(n):
-    counts = c.sample(allow_state=True, batch=n, format="count_dict_bin")
-    return (counts['00'] + counts['11'] - counts['01']- counts['10']) / n 
-
-
-
+counts = c.sample(allow_state=True, batch=1024, format="count_dict_bin")
+print("Measurement counts:", counts)
+measure = (counts["00"] + counts["11"] - counts["01"] - counts["10"]) / 1024
+theory = K.real(c.expectation_ps(z=[0, 1])).numpy().item()
+print(f"Theory: {theory}")
+print(f"Experiment: {measure}")
