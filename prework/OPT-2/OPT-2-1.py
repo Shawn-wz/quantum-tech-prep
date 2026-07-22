@@ -8,10 +8,12 @@ a, b, c, d = map(int, input("Enter 4 parameters: ").split())
 
 
 def f(x):
-    return abs(a * x**3 + b * x**2 + c * x + d)
+    return (a * x**3 + b * x**2 + c * x + d) ** 2
 
 
-x = K.implicit_randn(shape=[1,])
+x = K.implicit_randn(
+    shape=[1,]
+)
 history = []
 opt = K.optimizer(tf.keras.optimizers.Adam(1e-2))
 
@@ -25,7 +27,6 @@ print("Solution: ", x.numpy().item())
 print("Loss: ", v.numpy().item())
 
 plt.plot(range(200), history)
-plt.ylabel("solution")
+plt.ylabel("loss")
 plt.xlabel("training step")
 plt.show()
-
